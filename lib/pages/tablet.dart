@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../components/side_menu.dart';
-import '../dashboard/dashboard_screen.dart';
-
 class TabletPage extends StatelessWidget {
   const TabletPage({super.key});
 

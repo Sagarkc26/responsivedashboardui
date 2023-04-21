@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsivedashboardui/components/side_menu.dart';
+import 'package:responsivedashboardui/dashboard.dart';
 import 'package:responsivedashboardui/dashboard/dashboard_screen.dart';
 
 class DesktopPage extends StatelessWidget {
@@ -13,11 +14,12 @@ class DesktopPage extends StatelessWidget {
       body: SafeArea(
           child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Expanded(
-            child: SideMenu(),
-          ),
-          Expanded(flex: 5, child: DashboardScreen())
+        children: [
+          if (DashBoard.isDeskTop(context))
+            const Expanded(
+              child: SideMenu(),
+            ),
+          const Expanded(flex: 5, child: DashboardScreen())
         ],
       )),
     );
@@ -30,7 +32,8 @@ class DrawerListTile extends StatelessWidget {
     required this.title,
     required this.press,
   }) : super(key: key);
-  final title;
+  final String title;
+
   final VoidCallback press;
   @override
   Widget build(BuildContext context) {
